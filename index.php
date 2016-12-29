@@ -3,7 +3,14 @@
 include('connect.php');
 include('header.php');
 
-if(isset($_SESSION['user'])) {}
+if(isset($_SESSION['user']) || $login) {
+    $username = $_SESSION['user'];
+}
+
+if(isset($_POST['username']) and isset($_POST['password'])) {
+    $username = db_quote($_POST['username'], $connection);
+    $password = db_quote($_POST['password'], $connection);
+}
 
 ?>
 

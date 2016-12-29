@@ -5,11 +5,9 @@ session_start();
 static $connection;
 
 if(!isset($connection)) {
-    $config = parse_ini_file('config.ini');
-    $connection = mysql_connect($config['server'], $config['username'], $config['password']);
-
     include('functions.php');
-
+    $db = new Database();
+    $connection = $db->connect();
 }
 
 if($connection == false) {

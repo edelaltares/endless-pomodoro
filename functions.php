@@ -1,20 +1,19 @@
 <?php
 
-Class Config {
-    $config = parse_ini_file('config.ini');
-    const   HOST    = $config['server'],
-            DB      = 'pomodoro',
-            USER    = $config['username'],
-            PASS    = $config['password'],
-            CHAR    = 'utf8',
-            PORT    = '3306';
-}
+$config = parse_ini_file("config.ini");
+
+define("HOST", $config['server']);
+define("USER", $config['username']);
+define("PASS", $config['password']);
+const   DB      = 'pomodoro',
+        CHAR    = 'utf8',
+        PORT    = '3306';
 
 Class Database {
     // connect to database
     function connect() {
-        $dsn = "mysql:host" . Config::HOST . ";dbname=" . Config:DB;
-        $dsn .= ";charset=" . Config::CHAR;
+        $dsn = "mysql:host=" . HOST . ";dbname=" . DB;
+        $dsn .= ";charset=" . CHAR;
 
         $opt = [
             PDO::ATTR_ERRMODE               => PDO::ERRMODE_EXCEPTION,
@@ -22,7 +21,7 @@ Class Database {
             PDO::ATTR_EMULATE_PREPARES      => false,
         ];
 
-        $pdo = new PDO($dsn, Config::USER, Config::PASS, $opt);
+        $pdo = new PDO($dsn, USER, PASS, $opt);
 
         return $pdo;
     }
@@ -44,4 +43,6 @@ Class User {
         $result->execute([$user, $pw]);
         $result = $result->fetch();
         return $result;
+    }
 }
+

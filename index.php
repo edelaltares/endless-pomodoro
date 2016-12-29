@@ -17,6 +17,28 @@
 	</head>
 
 <body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1" aria-expanded="false">
+                    <span class="sr-only">Toggle</span>
+                    <span class="icon-bar"></span>    
+                    <span class="icon-bar"></span>    
+                    <span class="icon-bar"></span>    
+                </button>
+            <a href="#" class="navbar-brand">Endless Pomodoro</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+            </ul>
+        </div>
+    </nav>
+
+        
+
     <div class="container" width="65%">
 
         <div class="row">

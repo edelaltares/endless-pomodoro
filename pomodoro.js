@@ -2,8 +2,8 @@ var pomo = 0;
 var brk = 0;
 var pomoCount = 0;
 
-const POMO_LENGTH = 25 * 1000;
-const BREK_LENGTH = 5 * 1000;
+const POMO_LENGTH = 25 * 1000 * 60;
+const BREK_LENGTH = 5 * 1000 * 60;
 
 pomoLength = POMO_LENGTH;
 brekLength = BREK_LENGTH;

@@ -1,3 +1,12 @@
+<?php
+
+include('connect.php');
+include('header.php');
+
+if(isset($_SESSION['user'])) {}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,6 +26,8 @@
 	</head>
 
 <body>
+    <!-- NAVIGATION -->
+
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -31,15 +42,48 @@
 
         <div class="collapse navbar-collapse" id="navbar1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">Link</a></li>
+                <li><a href="#login" data-toggle="modal">Login</a></li>
                 <li><a href="#">Link</a></li>
             </ul>
         </div>
     </nav>
 
+    <!-- LOGIN MODAL -->
+
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" arial-labelledby="LoginLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                    
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    
+                    <h4 class="modal-title" id="LoginLabel">Login</h4>
+                </div>
+            
+                <div class="modal-body">
+                    <form action="index.php" method="post">
+                        Username:<br />
+                        <input type="text" name="username" /><br /><br />
+
+                        Password:<br />
+                        <input type="password" name="password" />
+                </div>
         
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Register</button>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+        
+        <!-- CONTENT -->
 
     <div class="container" width="65%">
+
+        <!-- HEADER -->        
 
         <div class="row">
             <div class="col-sm-12">
@@ -49,11 +93,15 @@
 
         <div class="row">
 
+            <!-- TIMERS -->
+
             <div class="col-xs-6">
                 <div id="timer">0 min 0 sec</div>
                 <button class="btn" id="pomoStart">Start</button>
                 <button class="btn" id="stop">Stop</button>
             </div>
+
+            <!-- STATISTICS -->
 
             <div class="col-xs-6">
                 <div id="pomoCount">0 pomodoros</div>
@@ -63,7 +111,8 @@
     </div>
 
    
-    <!-- JQUERY -->
+    <!-- JQUERY SCRIPTS -->
+
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	
 	<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
@@ -73,9 +122,9 @@
 	<script>if(typeof($.fn.modal) === 'undefined') {document.write('<script src="js/bootstrap.min.js"><\/script>')}</script>
 
     <script src="pomodoro.js"></script> 
-    
-    
+        
     <!-- CSS FAILOVER -->
+
     <script>
         $(document).ready(function() {
             var bodyColor = $('body').css('color');

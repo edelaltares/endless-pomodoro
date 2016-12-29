@@ -1,42 +1,67 @@
 var pomo = 0;
 var brk = 0;
 var pomoCount = 0;
-var pomoLength = 25 * 1000 /* * 60 */;
-var brekLength = 5 * 1000 /* * 60 */;
+
+const POMO_LENGTH = 25 * 1000;
+const BREK_LENGTH = 5 * 1000;
+
+pomoLength = POMO_LENGTH;
+brekLength = BREK_LENGTH;
 
 function pomoStart() {
     console.log("Pomo started");
-    pomo = setInterval(pomoEnd, 25000);
-    pomoCount = setInterval(pomoCountEnd, 1000);
+    pomo = setInterval(pomoEnd, 1000);
 }
 
 function pomoEnd() {
-    alert("Pomo ended");
-    clearInterval(pomo);
-    console.log("Pomo ended");
-    breakStart();
-}
+    minutes = Math.floor(pomoLength / 1000 / 60);
+    seconds = (pomoLength - minutes * 1000 * 60) / 1000;
+    document.getElementById("timer").innerHTML = minutes + " min " + seconds + " sec";
 
-function pomoCountEnd() {
-    console.log(minutes + ":" + seconds);
+    if(pomoLength === 0) {
+        alert("Pomo ended");
+        clearInterval(pomo);
+        console.log("Pomo ended");
+        breakStart();
+    }    
+
+    else {
+        pomoLength -= 1000;
+    }
 }
 
 function breakStart() {
     console.log("Break started");
-    brk = setInterval(breakEnd, 5000);
+    brk = setInterval(breakEnd, 1000);
 }
 
 function breakEnd() {
-    alert("Break ended");
-    console.log("Break ended");
-    clearInterval(brk);
-    pomoStart();
+    minutes = Math.floor(brekLength / 1000 / 60);
+    seconds = (brekLength - minutes) / 1000;
+    document.getElementById("timer").innerHTML = minutes + " min " + seconds + " sec";
+
+    if(brekLength === 0) {
+        alert("Break ended");
+        console.log("Break ended");
+        clearInterval(brk);
+        pomoStart();
+        brekLength = BREK_LENGTH;
+        pomoLength = POMO_LENGTH;
+        pomoCount++;
+        document.getElementById("pomoCount").innerHTML = pomoCount + " pomodoros";
+    }
+
+    else {
+        brekLength -= 1000;
+    }
 }
 
 function pomoStop() {
     console.log("Stop pomo session");
     clearInterval(pomo);
     clearInterval(brk);
+    pomoLength = POMO_LENGTH;
+    brekLength = BREK_LENGTH;
 }
 
 $(document).ready(function() {

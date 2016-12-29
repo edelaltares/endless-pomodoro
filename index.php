@@ -26,10 +26,17 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-12">
+
+            <div class="col-xs-6">
+                <div id="timer">0 min 0 sec</div>
                 <button class="btn" id="pomoStart">Start</button>
                 <button class="btn" id="stop">Stop</button>
-             </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div id="pomoCount">0 pomodoros</div>
+            </div>
+
         </div> 
     </div>
 

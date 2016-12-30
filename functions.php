@@ -36,8 +36,10 @@ Class Database {
 }
 
 Class User {
+    public $loggedin = false;    
+
     function login($user, $pw, $db) {
-        $query = "SELECT * FROM users WHERE user=? AND password=?";
+        $query = "SELECT * FROM users WHERE username=? AND password=?";
 
         $result = $db->prepare($query);
         $result->execute([$user, $pw]);

@@ -1,15 +1,25 @@
 <?php
 ini_set('display_errors',1);
 include('connect.php');
-include('header.php');
 
-if(isset($_SESSION['user']) || $login) {
+if(isset($_SESSION['user'])) {
     $username = $_SESSION['user'];
 }
 
 if(isset($_POST['username']) and isset($_POST['password'])) {
-    $username = db_quote($_POST['username'], $connection);
-    $password = db_quote($_POST['password'], $connection);
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    
+    $user = new User();
+
+    $result = $user->login($username, $password, $connection); 
+    
+    if($result) { 
+        
+    }
+    else {
+        echo "nooooooo";
+    }
 }
 
 ?>

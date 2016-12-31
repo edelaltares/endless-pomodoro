@@ -1,28 +1,13 @@
 <?php
 ini_set('display_errors',1);
+
 include('connect.php');
 
 if(isset($_SESSION['user'])) {
     $username = $_SESSION['user'];
-    echo "Logged in";
+    echo "Logged in $username";
 }
 
-if(isset($_POST['username']) and isset($_POST['password'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    
-    $user = new User();
-
-    $result = $user->login($username, $password, $connection); 
-    
-    if($result) { 
-        $_SESSION['user'] = $username;
-        echo "Logged in";
-    }
-    else { 
-        echo "Could not login";
-    }
-}
 
 ?>
 
@@ -86,7 +71,7 @@ if(isset($_POST['username']) and isset($_POST['password'])) {
                 </div>
             
                 <div class="modal-body">
-                    <form action="index.php" method="post">
+                    <form action="login.php" method="post">
                         Username:<br />
                         <input type="text" name="username" /><br /><br />
 

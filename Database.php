@@ -1,7 +1,10 @@
 <?php 
 
 Class Database {
-    public $pdo;
+    public $pdo = 0;
+
+    public function __construct() {
+    }
 
     public function connect($config_file) {
         $config = parse_ini_file($config_file);
@@ -21,14 +24,14 @@ Class Database {
             PDO::ATTR_EMULATE_PREPARES      => false,
         ];
 
-        $this->$pdo = new PDO($dsn, USER, PASS, $opt);
+        $this->pdo = new PDO($dsn, $user, $pass, $opt);
 
-        return $this->$pdo;
+        return $this->pdo;
     }
 
     // run query
-    function query($query, $variables) {
-        $result = $this->$pdo->prepare($query);
+    public function query($query, $variables) {
+        $result = $this->pdo->prepare($query);
 
         $result->execute($variables);
         return $result;

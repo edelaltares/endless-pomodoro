@@ -4,6 +4,7 @@ include('connect.php');
 
 if(isset($_SESSION['user'])) {
     $username = $_SESSION['user'];
+    echo "Logged in";
 }
 
 if(isset($_POST['username']) and isset($_POST['password'])) {
@@ -60,7 +61,13 @@ if(isset($_POST['username']) and isset($_POST['password'])) {
 
         <div class="collapse navbar-collapse" id="navbar1">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#login" data-toggle="modal">Login</a></li>
+                <li>
+                    <?php if(!isset($_SESSION['user'])): ?>
+                        <a href="#login" data-toggle="modal">Login</a></li>
+                    <?php else: ?>
+                        <a href="logout.php">Logout</a>
+                    <?php endif; ?>
+                </li>
                 <li><a href="#">Link</a></li>
             </ul>
         </div>

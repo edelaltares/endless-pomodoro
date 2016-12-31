@@ -16,9 +16,10 @@ if(isset($_POST['username']) and isset($_POST['password'])) {
     
     if($result) { 
         $_SESSION['user'] = $username;
+        echo "Logged in";
     }
-    else {
-        echo "nooooooo";
+    else { 
+        echo "Could not login";
     }
 }
 

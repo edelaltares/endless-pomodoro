@@ -34,7 +34,7 @@ Class Database {
         $result = $this->pdo->prepare($query);
         
         $result->execute($variables);
-
+        
         return $result;
     }
 

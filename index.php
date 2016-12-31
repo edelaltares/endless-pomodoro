@@ -15,7 +15,7 @@ if(isset($_POST['username']) and isset($_POST['password'])) {
     $result = $user->login($username, $password, $connection); 
     
     if($result) { 
-        
+        $_SESSION['user'] = $username;
     }
     else {
         echo "nooooooo";

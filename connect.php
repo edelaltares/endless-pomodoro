@@ -7,7 +7,8 @@ static $connection;
 if(!isset($connection)) {
     include('functions.php');
     $db = new Database();
-    $connection = $db->connect('config.ini');
+    $db->connect('config.ini');
+    $connection = $db;
 }
 
 if($connection == false) {

@@ -32,8 +32,9 @@ Class Database {
     // run query
     public function query($query, $variables) {
         $result = $this->pdo->prepare($query);
-
+        
         $result->execute($variables);
+
         return $result;
     }
 

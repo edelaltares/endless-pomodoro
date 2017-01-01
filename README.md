@@ -1,2 +1,1 @@
-# endless-pomodoro
-Small Pomodoro app
+# mygithubpage

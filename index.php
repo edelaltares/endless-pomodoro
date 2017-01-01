@@ -5,10 +5,7 @@ include('connect.php');
 
 if(isset($_SESSION['user'])) {
     $username = $_SESSION['user'];
-    echo "Logged in $username";
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +45,7 @@ if(isset($_SESSION['user'])) {
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <?php if(!isset($_SESSION['user'])): ?>
-                        <a href="#login" data-toggle="modal">Login</a></li>
+                        <a href="#login" data-toggle="modal">Login/Register</a></li>
                     <?php else: ?>
                         <a href="logout.php">Logout</a>
                     <?php endif; ?>
@@ -58,31 +55,83 @@ if(isset($_SESSION['user'])) {
         </div>
     </nav>
 
+
     <!-- LOGIN MODAL -->
 
     <div class="modal fade" id="login" tabindex="-1" role="dialog" arial-labelledby="LoginLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                    
+                    <!--
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     
                     <h4 class="modal-title" id="LoginLabel">Login</h4>
-                </div>
+                </div>-->
             
                 <div class="modal-body">
-                    <form action="login.php" method="post">
-                        Username:<br />
-                        <input type="text" name="username" /><br /><br />
+                    <div class="row">
 
-                        Password:<br />
-                        <input type="password" name="password" />
+                        <!-- LOGIN -->
+
+
+                        <div class="col-xs-6">
+
+                            <h4>Login</h4>
+
+                            <?php if(isset($_SESSION['log_failed'])): ?>
+                                <script type="text/javascript">
+                                    $('#login').modal('show');
+                                </script>
+
+                                <div class="alert alert-danger alert-dismissible">Username or password incorrect</div>
+                           
+                            <?php endif; ?>
+
+                            <form action="login.php" method="post">
+                                Username:<br />
+                                <input type="text" name="username" /><br /><br />
+
+                                Password:<br />
+                                <input type="password" name="password" /><br /><br />
+                                
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </form>
+                        </div>
+
+                        <!-- REGISTER -->                        
+                        
+                        <div class="col-xs-6">
+                            <h4>Register</h4>
+
+                            <?php if(isset($_SESSION['reg_failed'])): ?>
+                                <script type="text/javascript">
+                                    $('#login').modal('show');
+                                </script>
+
+                                <div class="alert alert-danger alert-dismissible">Username or password incorrect</div>
+                           
+                            <?php endif; ?>
+
+                            <form action="register.php" method="post">
+                                Username:<br />
+                                <input type="text" name="new_username" /><br /><br />
+
+                                Password:<br />
+                                <input type="password" name="new_password" /><br /><br />
+                                
+                                Verify Password:<br />
+                                <input type="password" name="verify_password" /><br /><br />
+
+                                E-mail:<br />
+                                <input type="text" name="password" /><br /><br />
+                                <button type="submit" class="btn btn-primary">Register</button>
+                            </form>                  
+                        </div>
+                    </div>
                 </div>
         
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Register</button>
-                    <button type="submit" class="btn btn-primary">Login</button>
-                </form>
+                    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
 
             </div>
@@ -144,6 +193,15 @@ if(isset($_SESSION['user'])) {
 
         });
     </script>
+
+    <?php if(isset($_SESSION['log_failed']) || isset($_SESSION['reg_failed'])): ?>
+        <script>
+            $('#login').modal('toggle');
+        </script>
+    <?php 
+        unset($_SESSION['failed']);
+        session_destroy();
+        endif; ?>
 
 </body>
 

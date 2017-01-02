@@ -74,7 +74,7 @@ if(isset($_SESSION['user'])) {
                         <!-- LOGIN -->
 
 
-                        <div class="col-xs-6">
+                        <div class="col-sm-6">
 
                             <h4>Login</h4>
 
@@ -100,7 +100,7 @@ if(isset($_SESSION['user'])) {
 
                         <!-- REGISTER -->                        
                         
-                        <div class="col-xs-6">
+                        <div class="col-sm-6">
                             <h4>Register</h4>
 
                             <?php if(isset($_SESSION['reg_failed'])): ?>

@@ -11,11 +11,15 @@ if(count($_POST) == 4) {
 
     $result = $user->register($username, $password, $verifypw, $connection); 
     
-    if($result) { 
-        $_SESSION['user'] = $username;
+    if(!$result) {
+        $_SESSION['reg_failed'] = true;  
+    }
+    else if($result == -1) {
+        $_SESSION['pw_same'] = false;
+        $_SESSION['reg_failed'] = true;
     }
     else {
-        $_SESSION['reg_failed'] = true;
+        $_SESSION['user'] = $username;
     }
     
 }

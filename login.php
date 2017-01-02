@@ -15,7 +15,7 @@ if(isset($_POST['username']) and isset($_POST['password'])) {
         $_SESSION['user'] = $username;
     }
     else {
-        $_SESSION['failed'] = true;
+        $_SESSION['log_failed'] = true;
     }
     
     header('Location: index.php');

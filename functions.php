@@ -25,7 +25,7 @@ Class User {
             
             return $result; 
         }
-        return false; 
+        return -1; 
     }
 }
 
@@ -60,19 +60,19 @@ Class Pomo {
     }
         
     public function submitTag() {
-        foreach($tag in $this->tags) {
+        foreach($this->tags as $tag) {
             // check if tag exists
             $id = $this->getTagId($tag);
 
             if(!$id) {
                 // add tag
                 $result = addTag($tag);
-                $id = 
+                $id = 0;
             }
             
             // add relationship
-            $query = "INSERT INTO tag_rels VALUES (?, ?)"l
-            $result = $db->query($query, array($id, $this->id);
+            $query = "INSERT INTO tag_rels VALUES (?, ?)";
+            $result = $db->query($query, array($id, $this->id));
         }
     }
 }

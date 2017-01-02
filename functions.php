@@ -25,7 +25,7 @@ Class User {
             
             return $result; 
         }
-        return false; 
+        return -1; 
     }
 }
 

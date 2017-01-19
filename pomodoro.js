@@ -2,7 +2,7 @@ var pomo = 0;
 var brk = 0;
 var pomoCount = 0;
 
-const POMO_LENGTH = 25 * 1000 * 60;
+const POMO_LENGTH = 0.25 * 1000 * 60;
 const BREK_LENGTH = 5 * 1000 * 60;
 
 pomoLength = POMO_LENGTH;
@@ -17,6 +17,8 @@ function pomoEnd() {
     minutes = Math.floor(pomoLength / 1000 / 60);
     seconds = (pomoLength - minutes * 1000 * 60) / 1000;
     document.getElementById("timer").innerHTML = minutes + " min " + seconds + " sec";
+    document.getElementById("pomoLabel").style.display = "inline";
+    document.getElementById("breakLabel").style.display = "none";
 
     if(pomoLength === 0) {
         alert("Pomo ended");
@@ -37,8 +39,10 @@ function breakStart() {
 
 function breakEnd() {
     minutes = Math.floor(brekLength / 1000 / 60);
-    seconds = (brekLength - minutes) / 1000;
+    seconds = ((brekLength - (minutes * 60 * 1000))/ 1000);
     document.getElementById("timer").innerHTML = minutes + " min " + seconds + " sec";
+    document.getElementById("breakLabel").style.display = "inline";
+    document.getElementById("pomoLabel").style.display = "none";
 
     if(brekLength === 0) {
         alert("Break ended");
@@ -68,5 +72,3 @@ $(document).ready(function() {
     $("#pomoStart").click(pomoStart);
     $("#stop").click(pomoStop);
 });
-
-

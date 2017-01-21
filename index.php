@@ -155,6 +155,8 @@ if(isset($_SESSION['user'])) {
             <!-- TIMERS -->
 
             <div class="col-xs-6">
+                <div id="breakLabel">Break</div>
+                <div id="pomoLabel">Pomodoro</div>
                 <div id="timer">0 min 0 sec</div>
                 <button class="btn" id="pomoStart">Start</button>
                 <button class="btn" id="stop">Stop</button>

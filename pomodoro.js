@@ -2,7 +2,7 @@ var pomo = 0;
 var brk = 0;
 var pomoCount = 0;
 
-const POMO_LENGTH = 25 * 1000 * 60;
+const POMO_LENGTH = 25 * 1000 /* 60 */;
 const BREK_LENGTH = 5 * 1000 * 60;
 
 pomoLength = POMO_LENGTH;
@@ -21,7 +21,9 @@ function pomoEnd() {
     document.getElementById("breakLabel").style.display = "none";
 
     if(pomoLength === 0) {
-        alert("Pomo ended");
+        if(!$('#notifications').prop('checked')) {
+            alert("Pomo ended");
+        }
         clearInterval(pomo);
         console.log("Pomo ended");
         breakStart();

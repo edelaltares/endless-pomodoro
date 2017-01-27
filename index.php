@@ -94,8 +94,8 @@ if(isset($_SESSION['user'])) {
                                 Password:<br />
                                 <input type="password" name="password" /><br /><br />
                                 
-                                <button type="submit" class="btn btn-primary">Login</button>
-                            </form>
+				<button type="submit" class="btn btn-primary">Login</button>				
+			    </form>
                         </div>
 
                         <!-- REGISTER -->                        
@@ -159,7 +159,8 @@ if(isset($_SESSION['user'])) {
                 <div id="pomoLabel">Pomodoro</div>
                 <div id="timer">0 min 0 sec</div>
                 <button class="btn" id="pomoStart">Start</button>
-                <button class="btn" id="stop">Stop</button>
+		<button class="btn" id="stop">Stop</button>
+		<input type="checkbox" id="notifications" name="alerts" /> Turn off browser alerts
             </div>
 
             <!-- STATISTICS -->

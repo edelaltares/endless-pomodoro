@@ -1,6 +1,7 @@
 var pomo = 0;
 var brk = 0;
 var pomoCount = 0;
+var sound_alert = new Audio('alert.mp3');
 
 const POMO_LENGTH = 25 * 1000 /* 60 */;
 const BREK_LENGTH = 5 * 1000 * 60;
@@ -21,9 +22,13 @@ function pomoEnd() {
     document.getElementById("breakLabel").style.display = "none";
 
     if(pomoLength === 0) {
+        sound_alert.play();
+
         if(!$('#notifications').prop('checked')) {
             alert("Pomo ended");
         }
+
+       
         clearInterval(pomo);
         console.log("Pomo ended");
         breakStart();

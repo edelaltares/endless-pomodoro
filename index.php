@@ -170,6 +170,16 @@ if(isset($_SESSION['user'])) {
             </div>
 
         </div> 
+
+        <div class="row">
+        
+            <!-- FOOTER -->
+
+            <div class="col-sm-12">
+                Sounds from <a href="http://zapsplat.com">ZapSplat</a>
+            </div>
+        </div>        
+
     </div>
 
    

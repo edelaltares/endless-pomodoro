@@ -2,11 +2,26 @@ var pomo = 0;
 var brk = 0;
 var pomoCount = 0;
 
-const POMO_LENGTH = 25 * 100 * 60;
-const BREK_LENGTH = 5 * 100 * 60;
+const POMO_LENGTH = 15 * 1000;
+const BREK_LENGTH = 15 * 1000;
 
 pomoLength = POMO_LENGTH;
 brekLength = BREK_LENGTH;
+ 
+function enterTag(e) {
+    if(event.keyCode == 13) {
+        console.log("PRESSED ENTER");
+
+        $("#tag").unbind("keyup", enterTag)
+        tag = document.getElementById("tag").value;
+
+        document.getElementById("pomoTags").innerHTML += "<br />" + tag;
+
+        console.log("Pomo ended");
+
+        breakStart();
+    }
+}
 
 function pomoStart() {
     console.log("Pomo started");
@@ -19,16 +34,15 @@ function pomoEnd() {
     document.getElementById("timer").innerHTML = minutes + " min " + seconds + " sec";
     document.getElementById("pomoLabel").style.display = "inline";
     document.getElementById("breakLabel").style.display = "none";
+
     if(pomoLength === 0) {
         alert("Pomo ended");
         clearInterval(pomo);
 
-        tags = document.getElementById("tag").value
+        tag = ""
 
-        document.getElementById("pomoTags").innerHTML = document.getElementById("pomoTags").innerHTML + "<br />" + tags
-
-        console.log("Pomo ended");
-        breakStart();
+        $("#tag").keyup(enterTag);
+       
     }    
 
     else {
@@ -37,6 +51,10 @@ function pomoEnd() {
 }
 
 function breakStart() {
+   $("#tag").blur();
+                
+    document.getElementById("tag").onkeyup = null;
+
     console.log("Break started");
     brk = setInterval(breakEnd, 1000);
 }

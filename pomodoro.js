@@ -35,9 +35,12 @@ function pomoEnd() {
     document.getElementById("pomoLabel").style.display = "inline";
     document.getElementById("breakLabel").style.display = "none";
 
-    if(pomoLength === 0) {
+   if(pomoLength === 0) {
         alert("Pomo ended");
         clearInterval(pomo);
+
+        pomoCount++;
+        document.getElementById("pomoCount").innerHTML = pomoCount + " pomodoros";
 
         tag = ""
 
@@ -73,8 +76,6 @@ function breakEnd() {
         pomoStart();
         brekLength = BREK_LENGTH;
         pomoLength = POMO_LENGTH;
-        pomoCount++;
-        document.getElementById("pomoCount").innerHTML = pomoCount + " pomodoros";
     }
 
     else {
